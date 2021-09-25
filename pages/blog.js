@@ -1,30 +1,49 @@
-export default function Blog() {
+import Head from "next/head";
+import Link from "next/link";
+import Date from "../components/date";
+import clientPromise from "../lib/mongodb";
+
+export default function Blog({blogs}) {
     return (
-        <section>
-            {/*<h2>Layout Example (About)</h2>*/}
-            {/*<p>*/}
-            {/*    This example adds a property <code>getLayout</code> to your page,*/}
-            {/*    allowing you to return a React component for the layout. This allows you*/}
-            {/*    to define the layout on a per-page basis. Since we're returning a*/}
-            {/*    function, we can have complex nested layouts if desired.*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*    When navigating between pages, we want to persist page state (input*/}
-            {/*    values, scroll position, etc) for a Single-Page Application (SPA)*/}
-            {/*    experience.*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*    This layout pattern will allow for state persistence because the React*/}
-            {/*    component tree is persisted between page transitions. To preserve state,*/}
-            {/*    we need to prevent the React component tree from being discarded between*/}
-            {/*    page transitions.*/}
-            {/*</p>*/}
-            {/*<h3>Try It Out</h3>*/}
-            {/*<p>*/}
-            {/*    To visualize this, try tying in the search input in the{' '}*/}
-            {/*    <code>Sidebar</code> and then changing routes. You'll notice the input*/}
-            {/*    state is persisted.*/}
-            {/*</p>*/}
-        </section>
+        <div className="container">
+            <main>
+                <table className='table-fixed divide-y'>
+                    <thead>
+                    <tr className=''>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Title</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Description</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Topic</th>
+                        <th scope='col' className="w-1/12 text-left uppercase tracking-wider">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody className='divide-y'>
+                    {blogs.map((blog) => (
+                        <tr>
+                            <td>{blog.title}</td>
+                            <td>{blog.description}</td>
+                            <td>{blog.topic}</td>
+                            <td><Date dateString={blog.date}/></td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </main>
+        </div>
     )
+}
+
+export async function getServerSideProps(context) {
+    const client = await clientPromise
+    const db = await client.db('portfolio');
+
+    const blogs = await db
+        .collection("blog")
+        .find({})
+        .toArray();
+
+    return {
+        props: {
+            blogs: JSON.parse(JSON.stringify(blogs))
+        }
+    }
 }
