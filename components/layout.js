@@ -58,18 +58,18 @@ function Sidebar() {
         <nav>
             <div className='fixed py-16 uppercase'>
                 <Link href="/">
-                    <a onClick={() => setSidebarOpen(!sidebarOpen)}>Eugene Baek</a>
+                    <a>Eugene Baek</a>
                 </Link>
             </div>
             <div className='flex flex-col pt-36'>
                 <Link href="/about">
-                    <a onClick={() => setSidebarOpen(!sidebarOpen)}>About</a>
+                    <a>About</a>
                 </Link>
                 <Link href="/portfolio">
-                    <a onClick={() => setSidebarOpen(!sidebarOpen)}>Portfolio</a>
+                    <a>Portfolio</a>
                 </Link>
                 <Link href="/blog">
-                    <a onClick={() => setSidebarOpen(!sidebarOpen)}>Blog</a>
+                    <a>Blog</a>
                 </Link>
             </div>
         </nav>
