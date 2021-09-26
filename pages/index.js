@@ -11,8 +11,8 @@ export default function Home({home}) {
                         <div>
                             {home.images.map((image, index) => <img key={index} className='mb-5' src={image}/>)}
                         </div>
-                        <div className='flex my-8'>
-                            <div className='flex-1'>
+                        <div className='flex flex-col sm:flex-row'>
+                            <div className='flex-1 mb-4 sm:mb-0'>
                                 <h2>{home.title}</h2>
                                 <Date dateString={home.date}/>
                                 <h2>{home.subtitle}</h2>
@@ -23,7 +23,6 @@ export default function Home({home}) {
                         </div>
                     </div>
                 ))}
-
             </main>
         </div>
     )

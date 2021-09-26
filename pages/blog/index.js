@@ -1,8 +1,10 @@
 import Head from "next/head";
-import Date from "../components/date";
-import clientPromise from "../lib/mongodb";
+import Link from "next/link";
+import Date from "../../components/date";
+import clientPromise from "../../lib/mongodb";
 
-export default function Portfolio({projects}) {
+export default function Blog({blogs}) {
+
     return (
         <div className="container">
             <main>
@@ -10,18 +12,18 @@ export default function Portfolio({projects}) {
                     <thead>
                     <tr className=''>
                         <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Title</th>
-                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Technology</th>
-                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Language</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Description</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Topic</th>
                         <th scope='col' className="w-1/12 text-left uppercase tracking-wider">Date</th>
                     </tr>
                     </thead>
                     <tbody className='divide-y'>
-                    {projects.map((project) => (
+                    {blogs.map((blog) => (
                         <tr>
-                            <td><a href={project.link}>{project.title}</a></td>
-                            <td>{project.technology}</td>
-                            <td>{project.languages}</td>
-                            <td><Date dateString={project.date}/></td>
+                            <td><a href={`/blog/${blog._id}`}>{blog.title}</a></td>
+                            <td>{blog.description}</td>
+                            <td>{blog.topic}</td>
+                            <td><Date dateString={blog.date}/></td>
                         </tr>
                     ))}
                     </tbody>
@@ -35,14 +37,14 @@ export async function getServerSideProps(context) {
     const client = await clientPromise
     const db = await client.db('portfolio');
 
-    const projects = await db
-        .collection("projects")
+    const blogs = await db
+        .collection("blog")
         .find({})
         .toArray();
 
     return {
         props: {
-            projects: JSON.parse(JSON.stringify(projects))
+            blogs: JSON.parse(JSON.stringify(blogs))
         }
     }
 }

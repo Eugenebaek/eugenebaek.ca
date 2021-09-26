@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import React from "react";
 
 export default function Sidebar() {
     return (
         <nav>
-            <div className='fixed py-16'>
+            <div className='fixed py-16 uppercase'>
                 <Link href="/">
                     <a>Eugene Baek</a>
                 </Link>

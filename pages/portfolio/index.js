@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
-import Date from "../components/date";
-import clientPromise from "../lib/mongodb";
+import Date from "../../components/date";
+import clientPromise from "../../lib/mongodb";
 
-export default function Blog({blogs}) {
+export default function Portfolio({projects}) {
     return (
         <div className="container">
             <main>
@@ -11,18 +10,18 @@ export default function Blog({blogs}) {
                     <thead>
                     <tr className=''>
                         <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Title</th>
-                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Description</th>
-                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Topic</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Technology</th>
+                        <th scope='col' className="w-1/3 text-left uppercase tracking-wider">Language</th>
                         <th scope='col' className="w-1/12 text-left uppercase tracking-wider">Date</th>
                     </tr>
                     </thead>
                     <tbody className='divide-y'>
-                    {blogs.map((blog) => (
+                    {projects.map((project) => (
                         <tr>
-                            <td>{blog.title}</td>
-                            <td>{blog.description}</td>
-                            <td>{blog.topic}</td>
-                            <td><Date dateString={blog.date}/></td>
+                            <td><a href={project.link}>{project.title}</a></td>
+                            <td>{project.technology}</td>
+                            <td>{project.languages}</td>
+                            <td><Date dateString={project.date}/></td>
                         </tr>
                     ))}
                     </tbody>
@@ -36,14 +35,14 @@ export async function getServerSideProps(context) {
     const client = await clientPromise
     const db = await client.db('portfolio');
 
-    const blogs = await db
-        .collection("blog")
+    const projects = await db
+        .collection("projects")
         .find({})
         .toArray();
 
     return {
         props: {
-            blogs: JSON.parse(JSON.stringify(blogs))
+            projects: JSON.parse(JSON.stringify(projects))
         }
     }
 }
