@@ -12,7 +12,7 @@ export default function Layout({children}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className='font-Roboto font-extralight'>
+            <div className='font-Roboto font-light text-xs sm:text-sm'>
                 <div className='flex gap-10 mx-10'>
                     <div className='w-full md:w-3/4 pt-36'>{children}</div>
                     <div className='hidden md:flex w-1/4 h-screen sticky top-0'>
@@ -25,7 +25,7 @@ export default function Layout({children}) {
                     ? <MobileSidebar/>
                     : ''}
                 </div>
-            </main>
+            </div>
         </>
     )
 }

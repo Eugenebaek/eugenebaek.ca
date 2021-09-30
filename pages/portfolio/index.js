@@ -4,8 +4,7 @@ import clientPromise from "../../lib/mongodb";
 
 export default function Portfolio({projects}) {
     return (
-        <div className="container">
-            <main>
+            <main className='overflow-x-scroll'>
                 <table className='table-fixed divide-y'>
                     <thead>
                     <tr className=''>
@@ -18,16 +17,15 @@ export default function Portfolio({projects}) {
                     <tbody className='divide-y'>
                     {projects.map((project) => (
                         <tr>
-                            <td><a href={project.link}>{project.title}</a></td>
-                            <td>{project.technology}</td>
-                            <td>{project.languages}</td>
-                            <td><Date dateString={project.date}/></td>
+                            <td className='whitespace-nowrap pr-20'><a href={project.link}>{project.title}</a></td>
+                            <td className='whitespace-nowrap pr-20'>{project.technology}</td>
+                            <td className='whitespace-nowrap pr-20'>{project.languages}</td>
+                            <td className='whitespace-nowrap pr-20'><Date dateString={project.date}/></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </main>
-        </div>
     )
 }
 

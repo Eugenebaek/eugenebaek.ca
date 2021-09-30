@@ -6,8 +6,7 @@ import clientPromise from "../../lib/mongodb";
 export default function Blog({blogs}) {
 
     return (
-        <div className="container">
-            <main>
+            <main className='overflow-x-scroll'>
                 <table className='table-fixed divide-y'>
                     <thead>
                     <tr className=''>
@@ -20,16 +19,15 @@ export default function Blog({blogs}) {
                     <tbody className='divide-y'>
                     {blogs.map((blog) => (
                         <tr>
-                            <td><a href={`/blog/${blog._id}`}>{blog.title}</a></td>
-                            <td>{blog.description}</td>
-                            <td>{blog.topic}</td>
-                            <td><Date dateString={blog.date}/></td>
+                            <td className='whitespace-nowrap pr-20'><a href={`/blog/${blog._id}`}>{blog.title}</a></td>
+                            <td className='whitespace-nowrap pr-20'>{blog.description}</td>
+                            <td className='whitespace-nowrap pr-20'>{blog.topic}</td>
+                            <td className='whitespace-nowrap pr-20'><Date dateString={blog.date}/></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </main>
-        </div>
     )
 }
 
