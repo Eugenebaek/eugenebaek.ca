@@ -18,8 +18,8 @@ export default function Layout({children}) {
                     <div className='hidden md:flex w-1/4 h-screen sticky top-0'>
                         <Sidebar/>
                     </div>
-                    <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden menu-button fixed top-2 right-2 sm:top-6 sm:right-6 z-50">
-                        {(sidebarOpen) ? 'x' : '+'}
+                    <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden menu-button fixed top-4 right-2 z-50">
+                        {(sidebarOpen) ? '< close >' : '< open >'}
                     </button>
                     {(sidebarOpen)
                     ? <MobileSidebar/>
@@ -32,13 +32,13 @@ export default function Layout({children}) {
 
 function MobileSidebar() {
     return (
-        <nav className='fixed w-full h-screen bg-white'>
-            <div className='fixed py-16 uppercase text-2xl'>
+        <nav className='fixed w-full h-screen bg-white text-base'>
+            <div className='fixed py-16 uppercase'>
                 <Link href="/">
                     <a onClick={() => setSidebarOpen(!sidebarOpen)}>Eugene Baek</a>
                 </Link>
             </div>
-            <div className='flex flex-col pt-36'>
+            <div className='flex flex-col pt-36 gap-y-1.5'>
                 <Link href="/about">
                     <a onClick={() => setSidebarOpen(!sidebarOpen)}>About</a>
                 </Link>
@@ -55,13 +55,13 @@ function MobileSidebar() {
 
 function Sidebar() {
     return (
-        <nav>
+        <nav className=''>
             <div className='fixed py-16 uppercase'>
                 <Link href="/">
                     <a>Eugene Baek</a>
                 </Link>
             </div>
-            <div className='flex flex-col pt-36'>
+            <div className='flex flex-col pt-36 gap-y-0.5'>
                 <Link href="/about">
                     <a>About</a>
                 </Link>
