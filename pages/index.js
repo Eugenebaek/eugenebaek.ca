@@ -8,9 +8,9 @@ export default function Home({home}) {
                 {home.map((home) => (
                     <div key={home.id} className='mb-16'>
                         <div>
-                            {home.images.map((image, index) => <img key={index} className='mb-5 ' src={image}/>)}
+                            {home.images.map((image, index) => <img key={index} className='mb-2 sm:mb-6' src={image}/>)}
                         </div>
-                        <div className='flex flex-col sm:flex-row'>
+                        <div className='flex flex-col sm:flex-row gap-x-4'>
                             <div className='flex-1 mb-4 sm:mb-0'>
                                 <h2>{home.title}</h2>
                                 <Date dateString={home.date}/>

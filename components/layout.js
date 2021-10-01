@@ -13,12 +13,12 @@ export default function Layout({children}) {
             </Head>
 
             <div className='font-Roboto font-light text-xs sm:text-sm'>
-                <div className='flex gap-10 mx-10'>
+                <div className='flex gap-2 mx-2 sm:gap-6 sm:mx-6'>
                     <div className='w-full md:w-3/4 pt-36'>{children}</div>
                     <div className='hidden md:flex w-1/4 h-screen sticky top-0'>
                         <Sidebar/>
                     </div>
-                    <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden menu-button fixed top-10 right-10 z-50">
+                    <button onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden menu-button fixed top-2 right-2 sm:top-6 sm:right-6 z-50">
                         {(sidebarOpen) ? 'x' : '+'}
                     </button>
                     {(sidebarOpen)
@@ -33,7 +33,7 @@ export default function Layout({children}) {
 function MobileSidebar() {
     return (
         <nav className='fixed w-full h-screen bg-white'>
-            <div className='fixed py-16 uppercase'>
+            <div className='fixed py-16 uppercase text-2xl'>
                 <Link href="/">
                     <a onClick={() => setSidebarOpen(!sidebarOpen)}>Eugene Baek</a>
                 </Link>
