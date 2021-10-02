@@ -33,6 +33,7 @@ export async function getServerSideProps(context) {
     const home = await db
         .collection("home")
         .find({})
+        .sort({date: -1})
         .toArray();
 
     return {
