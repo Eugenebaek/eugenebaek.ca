@@ -43,7 +43,7 @@ function MobileSidebar() {
                         <a onClick={() => setSidebarOpen(!sidebarOpen)}>Eugene Baek</a>
                     </Link>
                 </div>
-                <div className='flex flex-col divide-y pt-6 gap-y-1.5'>
+                <div className='flex flex-col pt-10 gap-y-1.5'>
                     <Link href="/about">
                         <a onClick={() => setSidebarOpen(!sidebarOpen)}>About</a>
                     </Link>
@@ -55,7 +55,7 @@ function MobileSidebar() {
                     </Link>
                 </div>
                 <div className="text-xs">
-                    <div className='flex flex-col pt-4 gap-y-0.5'>
+                    <div className='flex flex-col pt-10 gap-y-0.5'>
                         {misc.map((misc) => (
                             <Link href={misc.link}>
                                 <a target="_blank">{misc.message}</a>
