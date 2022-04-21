@@ -50,9 +50,9 @@ function MobileSidebar() {
                     <Link href="/portfolio">
                         <a onClick={() => setSidebarOpen(!sidebarOpen)}>Portfolio</a>
                     </Link>
-                    <Link href="/blog">
-                        <a onClick={() => setSidebarOpen(!sidebarOpen)}>Blog</a>
-                    </Link>
+                    {/*<Link href="/blog">*/}
+                    {/*    <a onClick={() => setSidebarOpen(!sidebarOpen)}>Blog</a>*/}
+                    {/*</Link>*/}
                 </div>
                 <div className="text-xs">
                     <div className='flex flex-col pt-10 gap-y-0.5'>
@@ -114,9 +114,9 @@ function Sidebar() {
                 <Link href="/portfolio">
                     <a>Portfolio</a>
                 </Link>
-                <Link href="/blog">
-                    <a>Blog</a>
-                </Link>
+                {/*<Link href="/blog">*/}
+                {/*    <a>Blog</a>*/}
+                {/*</Link>*/}
             </div>
 
             <div className='flex flex-col pt-10 gap-y-0.5'>
